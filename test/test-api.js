@@ -227,6 +227,24 @@ describe('SwaggerApi', function () {
       assert.deepEqual(results.warnings, []);
     });
 
+    describe('should validate against custom schema', function () {
+      it('validates against custom Schema', function (done) {
+        var cDomain = _.cloneDeep(helpers.customDefinitionDoc);
+
+        Sway.create({
+            definition: cDomain,
+            customSchema: helpers.customSchema
+          })
+          .then(function (api) {
+            var results = api.validate();
+
+            assert.deepEqual(results.errors, []);
+            assert.deepEqual(results.warnings, []);
+          })
+          .then(done, done);
+      })
+    });
+
     describe('should return errors for an invalid document', function () {
       it('does not validate against JSON Schema', function (done) {
         var cSwagger = _.cloneDeep(helpers.swaggerDoc);
