@@ -1,6 +1,4 @@
 ### Dummy custom definition
-
-- domainName: invoice
-  ownerEmail: shadid@email.me
-- domainName: car
-  ownerEmail: car@email.me
+---
+  domainName: "invoice"
+  email: "shadid@email.me"

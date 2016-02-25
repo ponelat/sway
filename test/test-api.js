@@ -227,12 +227,42 @@ describe('SwaggerApi', function () {
       assert.deepEqual(results.warnings, []);
     });
 
-    describe('should validate against custom schema', function () {
-      it('validates against custom Schema', function (done) {
-        var cDomain = _.cloneDeep(helpers.customDefinitionDoc);
-
+    describe('validate against custom schema', function () {
+      it('fails to validate swagger defintion against custom schema', function (done) {
         Sway.create({
-            definition: cDomain,
+            definition: helpers.swaggerDoc,
+            customSchema: helpers.customSchema
+          })
+          .then(function (api) {
+            var results = api.validate();
+
+            assert.deepEqual(results.errors, [
+              {
+                "code": "OBJECT_MISSING_REQUIRED_PROPERTY",
+                "description": "Dummy schema of swagger domain",
+                "message": "Missing required property: email",
+                "params": [
+                  "email"
+                ],
+                "path": []
+              },
+              {
+                "code": "OBJECT_MISSING_REQUIRED_PROPERTY",
+                "description": "Dummy schema of swagger domain",
+                "message": "Missing required property: domainName",
+                "params": [
+                  "domainName"
+                ],
+                "path": []
+              }
+            ]);
+            assert.deepEqual(results.warnings, []);
+          })
+          .then(done, done);
+      });
+      it('validates custom defintion against custom schema', function (done) {
+        Sway.create({
+            definition: helpers.customDefinitionDoc,
             customSchema: helpers.customSchema
           })
           .then(function (api) {

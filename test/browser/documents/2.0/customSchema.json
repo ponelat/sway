@@ -1,20 +1,21 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "Custom schema for swagger domain",
+  "title": "DummyDomain",
   "description": "Dummy schema of swagger domain",
   "type": "object",
+  "properties": {
     "domainName": {
       "description": "Name of the domain",
       "type": "string"
     },
-    "ownerEmail": {
-      "description": "Email of the owner",
+    "email": {
+      "description": "Email of the domain owner",
       "type": "string",
       "format": "email"
     }
   },
   "required": [
     "domainName",
-    "ownerEmail"
+    "email"
   ]
 }
