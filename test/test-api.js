@@ -275,6 +275,55 @@ describe('SwaggerApi', function () {
       })
     });
 
+    describe('semantic validation', function () {
+      it('warns on semantic validation for unused definition', function (done) {
+        var cSwagger = _.cloneDeep(helpers.swaggerDoc);
+        cSwagger.definitions.unUsedDefinition = {
+          type: "integer",
+          format: "int64"
+        };
+
+        Sway.create({
+            definition: cSwagger
+          })
+          .then(function (api) {
+            var results = api.validate();
+
+            assert.deepEqual(results.errors, []);
+            assert.deepEqual(results.warnings, [
+              {
+                "code": "UNUSED_DEFINITION",
+                "message": "Definition is not used: #/definitions/unUsedDefinition",
+                "path": [
+                  "definitions",
+                  "unUsedDefinition"
+                ]
+              }]);
+          })
+          .then(done, done);
+      });
+      it('skips semantic validation when skipSemanticValidation is set to true', function (done) {
+        var cSwagger = _.cloneDeep(helpers.swaggerDoc);
+        cSwagger.definitions.unUsedDefinition = {
+          type: "integer",
+          format: "int64"
+        };
+
+        Sway.create({
+            definition: cSwagger,
+            skipSemanticValidation: true
+          })
+          .then(function (api) {
+            var results = api.validate();
+
+            assert.deepEqual(results.errors, []);
+            assert.deepEqual(results.warnings, []);
+          })
+          .then(done, done);
+      });
+    });
+
+
     describe('should return errors for an invalid document', function () {
       it('does not validate against JSON Schema', function (done) {
         var cSwagger = _.cloneDeep(helpers.swaggerDoc);
