@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "DummyDomain",
+  "description": "Dummy schema of swagger domain",
+  "type": "object",
+  "properties": {
+    "domainName": {
+      "description": "Name of the domain",
+      "type": "string"
+    },
+    "email": {
+      "description": "Email of the domain owner",
+      "type": "string",
+      "format": "email"
+    }
+  },
+  "required": [
+    "domainName",
+    "email"
+  ]
+}

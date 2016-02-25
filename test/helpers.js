@@ -32,10 +32,12 @@ var helpers = require('../lib/helpers');
 var path = require('path');
 var Sway = typeof window === 'undefined' ? require('..') : window.Sway;
 var YAML = require('js-yaml');
+var customSchema = require('./browser/documents/2.0/customSchema.json');
 
 var documentBase = path.join(__dirname, 'browser', 'documents');
 var relativeBase = typeof window === 'undefined' ? documentBase : 'base/documents';
 var swaggerDoc = YAML.safeLoad(fs.readFileSync(path.join(__dirname, './browser/documents/2.0/swagger.yaml'), 'utf8'));
+var customDefinitionDoc = YAML.safeLoad(fs.readFileSync(path.join(__dirname, './browser/documents/2.0/customDefinition.yaml'), 'utf8'));
 var swaggerDocValidator = helpers.getJSONSchemaValidator();
 var swaggerApi
 
@@ -79,6 +81,10 @@ module.exports.shouldNotHadFailed = function (err) {
 };
 
 module.exports.swaggerDoc = swaggerDoc;
+
+module.exports.customDefinitionDoc = customDefinitionDoc;
+
+module.exports.customSchema = customSchema;
 
 module.exports.swaggerDocPath = path.join(relativeBase, './2.0/swagger.yaml');
 
