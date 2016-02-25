@@ -227,7 +227,7 @@ describe('SwaggerApi', function () {
       assert.deepEqual(results.warnings, []);
     });
 
-    describe('validate against custom schema', function () {
+    describe('should validate against custom schema', function () {
       it('fails to validate swagger defintion against custom schema', function (done) {
         Sway.create({
             definition: helpers.swaggerDoc,
@@ -275,7 +275,7 @@ describe('SwaggerApi', function () {
       })
     });
 
-    describe('semantic validation', function () {
+    describe('should be able to configure semantic validation', function () {
       it('warns on semantic validation for unused definition', function (done) {
         var cSwagger = _.cloneDeep(helpers.swaggerDoc);
         cSwagger.definitions.unUsedDefinition = {
