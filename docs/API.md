@@ -620,6 +620,8 @@ Creates a SwaggerApi object from its Swagger definition(s).
 | --- | --- | --- |
 | options | <code>object</code> | The options for loading the definition(s) |
 | options.definition | <code>object</code> &#124; <code>string</code> | The Swagger definition location or structure |
+| [options.customSchema] | <code>object</code> | The custom schema to be used for validation |
+| [options.skipSemanticValidation] | <code>object</code> | If set to true semantic validation will be skipped |
 | [options.jsonRefs] | <code>object</code> | *(See [JsonRefs~JsonRefsOptions](https://github.com/whitlockjc/json-refs/blob/master/docs/API.md#module_JsonRefs..JsonRefsOptions))* |
 | [options.customValidators] | <code>[Array.&lt;ValidatorCallback&gt;](#module_Sway..ValidatorCallback)</code> | The custom validators |
 
