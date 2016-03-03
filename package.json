@@ -1,6 +1,6 @@
 {
   "name": "sway",
-  "version": "1.11.1-ponelat",
+  "version": "0.6.0",
   "description": "A library that simplifies Swagger integrations.",
   "main": "index.js",
   "scripts": {
