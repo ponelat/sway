@@ -1,6 +1,6 @@
 {
   "name": "sway",
-  "version": "0.6.0",
+  "version": "1.0.0",
   "description": "A library that simplifies Swagger integrations.",
   "main": "index.js",
   "scripts": {
@@ -8,6 +8,7 @@
   },
   "keywords": [
     "api",
+    "openapi",
     "swagger"
   ],
   "author": {
@@ -35,10 +36,10 @@
     "connect": "^3.4.1",
     "del": "^2.2.0",
     "exposify": "^0.5.0",
-    "glob": "^6.0.4",
+    "glob": "^7.0.0",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
-    "gulp-eslint": "^1.1.1",
+    "gulp-eslint": "^2.0.0",
     "gulp-if": "^2.0.0",
     "gulp-istanbul": "^0.10.3",
     "gulp-jsdoc-to-markdown": "^1.2.1",
@@ -48,7 +49,7 @@
     "gulp-uglify": "^1.5.1",
     "karma": "^0.13.19",
     "karma-mocha": "^0.2.1",
-    "karma-mocha-reporter": "^1.1.5",
+    "karma-mocha-reporter": "^2.0.0",
     "karma-phantomjs-launcher": "^1.0.0",
     "mocha": "^2.4.5",
     "pathmodify": "^0.5.0",
@@ -63,10 +64,12 @@
     "js-base64": "^2.1.9",
     "js-yaml": "^3.5.2",
     "json-refs": "ponelat/json-refs",
-    "json-schema-faker": "^0.2.8",
+    "json-schema-faker": "^0.3.2",
     "lodash": "^4.2.0",
     "native-promise-only": "^0.8.1",
     "path-to-regexp": "^1.2.1",
+    "swagger-methods": "^1.0.0",
+    "swagger-schema-official": "2.0.0-bab6bed",
     "z-schema": "^3.16.1"
   }
 }

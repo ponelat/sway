@@ -1,7 +1,7 @@
 {
   "name": "sway",
   "main": "browser/sway.js",
-  "version": "0.6.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/apigee-127/sway",
   "authors": [
     "Jeremy Whitlock <jwhitlock@apache.org>"
@@ -26,7 +26,7 @@
   "dependencies": {
     "js-yaml": "~3.5.2",
     "json-refs": "ponelat/json-refs",
-    "lodash": "~4.2.0",
+    "lodash": "~4.6.1",
     "visionmedia-debug": "~2.2.0",
     "z-schema": "~3.16.1",
     "js-base64": "~2.1.9"

@@ -1,6 +1,6 @@
 ## Release Notes
 
-### v1.0.0 (TBD)
+### v1.0.0 (2016-04-04)
 
 * Added support for nested query parameters, as supported by [qs](https://github.com/ljharb/qs) *(Issue #39)*
 * Added `Operation#getParameter(name, [location])` *(Issue #56)*
@@ -11,6 +11,7 @@ references resolved)*
 * Changed object exported in the browser from `SwaggerApi` to `Sway`
 * Changed the `definition` property for `Operation`, `Parameter`, `Path` and `Response` to now be
 `definitionFullyResolved` and now the `definition` property is the original, non-dereferenced value
+* Fixed a bug where `date`/`date-time` formats were not validated properly *(PR #70)*
 * Fixed a bug where `Path#getOperation` did not handle uppercase method
 * Fixed a bug where `Sway#create` did not properly register custom validators *(Issue #53)*
 * Fixed a bug where `Sway#create` with a relative `options.definition` did not take `options.jsonRefs.relativeBase`
@@ -33,10 +34,13 @@ need to have a _composite view_ for operation parameters.)*
 * Removed `Parameter#getSchema` and `Parameter.computedSchema` in favor of using `Parameter.schema` for consistency
 * Removed `SwaggerApi.resolved` in favor of `SwaggerApi.definitionFullyResolved` *(Object containing the Swagger
 with all references fully resolved)*
-* Updated invalid/missing JSON References to be a structural validation errors like z-schema does
+* Updated `Operation#validateRequest`, `Operation#validateResponse`, `Parameter#getValue` and
+`Response#validateResponse` to work with mixed-case header names *(Issue #67)*
 * Updated `SwaggerApi#validate` to include json-refs warnings as validation warnings
+* Updated invalid/missing JSON References to be a structural validation errors like z-schema does
 * Updated validation errors/warnings to no longer have `params` pruned *(Issue #61)*
 * Updated validation errors/warnings to no longer have `schemaId` pruned when its value is not `undefined` *(Issue #61)*
+* Updated validation to not stop at the first JSON Schema validation error *(Issue #63)*
 * Various changes to all constructors in `lib/types` *(Should have no impact since these are technically internal)*
 
 ### v0.6.0 (2015-11-25)
@@ -85,7 +89,7 @@ returning the validation results.  This will make all of the validation APIs con
 
 ### v0.3.3 (2015-10-23)
 
-* Fixed issue with file parameters being marked as invalid *(Issue #37)* 
+* Fixed issue with file parameters being marked as invalid *(Issue #37)*
 * Fixed issue with optional parameters being marked as invalid *(Issue #34)*
 * Fixed issue with `Parameter#getValue` not supporting non-plain object *(We need this for when passing in an `http.ClientRequest`) *(Issue #35)*
 * Updated json-refs to fix a bug with remote reference errors *(Issue #36)*
