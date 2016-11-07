@@ -6,7 +6,7 @@
  * Copyright (c) 2015 Apigee Corporation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
+ * of this software and associated documentation files (the 'Software'), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
@@ -15,7 +15,7 @@
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
@@ -238,22 +238,22 @@ describe('SwaggerApi', function () {
 
             assert.deepEqual(results.errors, [
               {
-                "code": "OBJECT_MISSING_REQUIRED_PROPERTY",
-                "description": "Dummy schema of swagger domain",
-                "message": "Missing required property: email",
-                "params": [
-                  "email"
+                'code': 'OBJECT_MISSING_REQUIRED_PROPERTY',
+                'description': 'Dummy schema of swagger domain',
+                'message': 'Missing required property: email',
+                'params': [
+                  'email'
                 ],
-                "path": []
+                'path': []
               },
               {
-                "code": "OBJECT_MISSING_REQUIRED_PROPERTY",
-                "description": "Dummy schema of swagger domain",
-                "message": "Missing required property: domainName",
-                "params": [
-                  "domainName"
+                'code': 'OBJECT_MISSING_REQUIRED_PROPERTY',
+                'description': 'Dummy schema of swagger domain',
+                'message': 'Missing required property: domainName',
+                'params': [
+                  'domainName'
                 ],
-                "path": []
+                'path': []
               }
             ]);
             assert.deepEqual(results.warnings, []);
@@ -278,9 +278,10 @@ describe('SwaggerApi', function () {
     describe('should be able to configure semantic validation', function () {
       it('warns on semantic validation for unused definition', function (done) {
         var cSwagger = _.cloneDeep(helpers.swaggerDoc);
+
         cSwagger.definitions.unUsedDefinition = {
-          type: "integer",
-          format: "int64"
+          type: 'integer',
+          format: 'int64'
         };
 
         Sway.create({
@@ -292,11 +293,11 @@ describe('SwaggerApi', function () {
             assert.deepEqual(results.errors, []);
             assert.deepEqual(results.warnings, [
               {
-                "code": "UNUSED_DEFINITION",
-                "message": "Definition is not used: #/definitions/unUsedDefinition",
-                "path": [
-                  "definitions",
-                  "unUsedDefinition"
+                'code': 'UNUSED_DEFINITION',
+                'message': 'Definition is not used: #/definitions/unUsedDefinition',
+                'path': [
+                  'definitions',
+                  'unUsedDefinition'
                 ]
               }]);
           })
@@ -304,9 +305,10 @@ describe('SwaggerApi', function () {
       });
       it('skips semantic validation when skipSemanticValidation is set to true', function (done) {
         var cSwagger = _.cloneDeep(helpers.swaggerDoc);
+
         cSwagger.definitions.unUsedDefinition = {
-          type: "integer",
-          format: "int64"
+          type: 'integer',
+          format: 'int64'
         };
 
         Sway.create({
